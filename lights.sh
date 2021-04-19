@@ -6,6 +6,9 @@
 # @reboot bash /home/pi/lights.sh           #
 #                                           #
 # Store this file in /home/pi/lights.sh     #
+# sudo chmod +x /home/pi/lights.sh          #
+#                                           #
+# "sudo raspi-config" to set keyboard to US #
 #############################################
 
 sleep 60s
