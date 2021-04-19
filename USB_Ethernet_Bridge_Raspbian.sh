@@ -4,29 +4,12 @@
 # Built for RASPBIAN #
 ######################
 
-
-clear
-updates=$(ping 1.1.1.1 -w 1 -c 1 | grep 'icmp_seq')
-
-while [[ $updates == *"icmp_seq"* ]];
-do
-echo "Waiting for internet"
-echo "This could take a while...."
-echo "Checking again in..."
-sleep 1s
-echo "     ...4..."
-sleep 1s
-echo "      ..3.."
-sleep 1s
-echo "       .2."
-sleep 1s
-echo "        1"
-sleep 1s
-clear
-updates=$(ping 1.1.1.1 -w 1 -c 1 | grep 'icmp_seq')
-done
-
-
+# Prior to running this script run the following on the RASPBIAN IP
+#
+# sudo apt update -y
+# sudo apt upgrade -y 
+# sudo apt install git -y
+#
 
 ##########################
 #INSTALLING DEPENDENCIES #
