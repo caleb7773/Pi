@@ -1,5 +1,13 @@
 #!/bin/bash
 
+
+#############################################
+# Add the following line to sudo crontab -e #
+# @reboot bash /home/pi/lights.sh           #
+#                                           #
+# Store this file in /home/pi/lights.sh     #
+#############################################
+
 sleep 60s
 
 
