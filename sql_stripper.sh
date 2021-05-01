@@ -1,4 +1,11 @@
 #!/bin/bash
+
+finish() {
+	rm -rf ~/kislog/*
+	rm -rf ~/kislog
+}
+trap finish EXIT
+
 cd ~
 rm -rf /tmp/*
 mkdir kislog
