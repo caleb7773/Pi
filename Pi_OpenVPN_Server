@@ -28,8 +28,8 @@ clear
 
 # Update the system
   sudo apt-get update
-# Install GIT
-  sudo apt-get install git -y
+# Install openvpn
+  sudo apt-get install openvpn -y
 
 # Delete default Kali User
 sudo vim -E -s /etc/passwd << EOF
