@@ -41,7 +41,8 @@ EOF
   clear
   echo "Switch users to vpnuser"
   su vpnuser     # Enter vpnuserpassword
-
+  read -p " Press ENTER to continue" enter
+  
 # Grabbing new users Sudo Password
   sudo ls 
   read -p " Press ENTER to continue" enter
