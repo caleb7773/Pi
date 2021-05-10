@@ -28,8 +28,7 @@ clear
 
 # Update the system
   sudo apt-get update
-# Install openvpn
-  sudo apt-get install openvpn -y
+
 
 # Delete default Kali User
 sudo vim -E -s /etc/passwd << EOF
@@ -50,6 +49,5 @@ EOF
 # Generate SSH-Keys for future script
   ssh-keygen -b 2048 -t rsa -f ~/.ssh/id_rsa -N ""
 
-
-
-
+# Install GIT & OpenVPN
+  sudo apt-get install openvpn git -y
