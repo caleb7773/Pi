@@ -105,3 +105,37 @@ EOF
 
 # Create the DH Key
   ./easyrsa gen-dh
+
+# Compiling certificates
+  cd pki
+  mkdir {tar,server,client-1,client-2}
+  
+# Server Certificates to Compressed Tar
+  cp ca.crt ./server/
+  cp ./issued/vpn-server.crt ./server/
+  cp ./private/vpn-server.key ./server/
+  cp dh.pem ./server/
+
+  tar cvf ./tar/server.tar ./server/*
+  
+# Client 1 Certificates to Compressed Tar
+  cp ca.crt ./client-1/
+  cp ./issued/vpn-client-1.crt ./client-1/
+  cp ./private/vpn-client-1.key ./client-1/
+  cp dh.pem ./client-1/
+
+  tar cvf ./tar/client-1.tar ./client-1/*
+  
+# Client 2 Certificates to Compressed Tar
+  cp ca.crt ./client-2/
+  cp ./issued/vpn-client-2.crt ./client-2/
+  cp ./private/vpn-client-2.key ./client-2/
+  cp dh.pem ./client-2/
+
+  tar cvf ./tar/client-2.tar ./client-2/*
+  
+# Push the Tar files out to the spawn clients
+  scp -o UserKnownHostsFile=/dev/null -o StrictHostKeyChecking=no ./tar/client-1.tar spawn1:/tmp/
+  scp -o UserKnownHostsFile=/dev/null -o StrictHostKeyChecking=no ./tar/client-2.tar spawn2:/tmp/
+
+
