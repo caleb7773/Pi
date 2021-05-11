@@ -5,7 +5,8 @@ clear
 # Grabbing new users Sudo Password
   sudo ls >/dev/null  
   read -p " Press ENTER to continue" enter
-
+  clear
+  
 # Generate SSH-Keys for future script
   ssh-keygen -b 2048 -t rsa -f ~/.ssh/id_rsa -N ""
   
@@ -14,6 +15,7 @@ clear
   
   while [[ ${choice} != [y/Y] ]];
   do
+  clear
   read -p "Enter Spawn One IP : " spawn_one_ip
   read -p "Enter Spawn Two IP : " spawn_two_ip
   read -p "Enter Server IP : " serverip
@@ -23,9 +25,11 @@ clear
   read -p "y/[n]" choice
   done
   
+  clear
   ssh-copy-id -o UserKnownHostsFile=/dev/null -o StrictHostKeyChecking=no vpnuser@${spawn_one_ip}
   read -p "Press ENTER to continue" ENTER
   
+  clear
   ssh-copy-id -o UserKnownHostsFile=/dev/null -o StrictHostKeyChecking=no vpnuser@${spawn_two_ip}
   read -p "Press ENTER to continue" ENTER
   
