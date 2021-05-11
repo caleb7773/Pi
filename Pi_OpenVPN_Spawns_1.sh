@@ -48,6 +48,10 @@ EOF
 # Grabbing new users Sudo Password
   sudo ls >/dev/null 
   read -p " Press ENTER to continue" enter
+  
+# Change ownership of git folder
+  sudo chown vpnuser /home/kali/pi -R
+  sudo chgrp vpnuser /home/kali/pi -R
 
 # Install OpenVPN
   sudo apt-get install openvpn -y
