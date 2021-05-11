@@ -6,3 +6,6 @@ sudo chmod +x ./pi/*
 
 # Run the Server second on the server
 ./pi/Pi_OpenVPN_Server_1.sh
+
+# Run the Spawns second script on both spawns
+./pi/Pi_OpenVPN_Spawns_2.sh
