@@ -69,7 +69,7 @@ EOF
   ./easyrsa build-client-full vpn-client-2 nopass
 
 # Create the DH Key
-  ./easyrsa gen-dh
+#  ./easyrsa gen-dh
 
 # Compiling certificates
   cd pki
@@ -90,7 +90,7 @@ sudo tee -a /etc/openvpn/vpn-server.conf << EOF
 dev tun
 topology subnet
 server 10.99.99.0 255.255.255.0
-dh dh.pem
+#dh dh.pem
 log vpnserver.log
 keepalive 10 60
 tls-server
