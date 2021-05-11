@@ -58,3 +58,9 @@ EOF
   cd /opt
   sudo git clone https://github.com/OpenVPN/easy-rsa.git
   sudo chown vpnuser:vpnuser /opt/easy-rsa -R
+  
+# Create Certificates
+  cd /opt/easy-rsa/easyrsa3
+  ./easyrsa init-pki
+  ./easyrsa --batch "--req-cn=openvpn.server" build-ca nopass
+  
