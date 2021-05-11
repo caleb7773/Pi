@@ -53,3 +53,8 @@ EOF
 
 # Install GIT & OpenVPN
   sudo apt-get install openvpn git -y
+
+# Install EasyRSA
+  cd /opt
+  sudo git clone https://github.com/OpenVPN/easy-rsa.git
+  sudo chown vpnuser:vpnuser /opt/easy-rsa -R
