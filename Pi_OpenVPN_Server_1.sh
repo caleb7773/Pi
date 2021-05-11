@@ -4,7 +4,7 @@ clear
 
 # Grab the sudo password prior to advancing
   echo "Put in Sudo Password"
-  sudo ls # Enter Default Password for Sudo
+  sudo ls >/dev/null 
   read -p " Press ENTER to continue" enter
 
 # Create new vpn user
@@ -45,7 +45,7 @@ EOF
   read -p " Press ENTER to continue" enter
   
 # Grabbing new users Sudo Password
-  sudo ls 
+  sudo ls >/dev/null  
   read -p " Press ENTER to continue" enter
 
 # Generate SSH-Keys for future script
