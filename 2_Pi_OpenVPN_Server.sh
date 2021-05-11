@@ -91,6 +91,7 @@ dev tun
 topology subnet
 server 10.99.99.0 255.255.255.0
 #dh dh.pem
+dh none
 log vpnserver.log
 keepalive 10 60
 tls-server
