@@ -73,13 +73,13 @@ EOF
 
 # Compiling certificates
   cd pki
-  mkdir {tar,server,client-1,client-2}
+  mkdir {server,client-1,client-2}
   
 # Server Certificates
   cp ca.crt ./server/
   grep -A 1000 'BEGIN CERTIFICATE' ./issued/vpn-server.crt > ./server/vpn-server.crt
   cp ./private/vpn-server.key ./server/
-  sudo cp dh.pem /etc/openvpn/dh.pem
+  #sudo cp dh.pem /etc/openvpn/dh.pem
 
 # Generating Server Config file
   serverca=$(cat ./server/ca.crt)
