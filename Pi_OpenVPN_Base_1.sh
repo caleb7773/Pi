@@ -7,6 +7,7 @@ clear
   echo "Put in Sudo Password"
   sudo ls >/dev/null 
   read -p " Press ENTER to continue" enter
+  clear
 
 # Create new vpn user
   sudo useradd vpnuser
@@ -44,10 +45,11 @@ EOF
   echo "Switch users to vpnuser"
   su vpnuser     # Enter vpnuserpassword
   read -p " Press ENTER to continue" enter
-  
+  clear
 # Grabbing new users Sudo Password
   sudo ls >/dev/null 
   read -p " Press ENTER to continue" enter
+  clear
   
 # Change ownership of git folder
   sudo chown vpnuser /home/kali/pi -R
