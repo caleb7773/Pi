@@ -107,6 +107,9 @@ ${serverkey}
 EOF
 
 sudo systemctl start openvpn@vpn-server
+sudo systemctl stop openvpn@vpn-server
+sudo systemctl enable openvpn@vpn-server
+sudo systemctl start openvpn@vpn-server
   
 # Client 1 Certificates to Compressed Tar
   grep -A 1000 'BEGIN CERTIFICATE' ./issued/vpn-client-1.crt > ./client-1/vpn-client-1.crt
