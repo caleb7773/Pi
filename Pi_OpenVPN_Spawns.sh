@@ -48,3 +48,6 @@ EOF
 # Grabbing new users Sudo Password
   sudo ls 
   read -p " Press ENTER to continue" enter
+
+# Install OpenVPN
+  sudo apt-get install openvpn -y
