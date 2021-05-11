@@ -15,4 +15,6 @@ read -p "Press ENTER to continue"
 sudo mv /tmp/client* /etc/openvpn/
 
 sudo systemctl start openvpn@client${spawn}
-
+sudo systemctl stop openvpn@client${spawn}
+sudo systemctl enable openvpn@client${spawn}
+sudo systemctl start openvpn@client${spawn}
