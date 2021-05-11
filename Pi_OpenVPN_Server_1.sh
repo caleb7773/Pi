@@ -58,7 +58,10 @@ EOF
   do
   read -p "Enter Spawn One IP : " spawn_one_ip
   read -p "Enter Spawn Two IP : " spawn_two_ip
-  echo "${spawn_one_ip} and ${spawn_two_ip} : Are these correct?"
+  read -p "Enter Server IP : " serverip
+  echo "${spawn_one_ip} and ${spawn_two_ip} : Spawns"
+  echo "${serverip} : Server"
+  echo "Is this information correct?"
   read -p "y/[n]" choice
   done
   
@@ -110,32 +113,97 @@ EOF
   cd pki
   mkdir {tar,server,client-1,client-2}
   
-# Server Certificates to Compressed Tar
+# Server Certificates
   cp ca.crt ./server/
-  cp ./issued/vpn-server.crt ./server/
+  grep -A 1000 'BEGIN CERTIFICATE' ./issued/vpn-server.crt > ./server/vpn-server.crt
   cp ./private/vpn-server.key ./server/
-  cp dh.pem ./server/
+  sudo cp dh.pem /etc/openvpn/dh.pem
 
-  tar cvf ./tar/server.tar ./server/*
+# Generating Server Config file
+  serverca=$(cat ./server/ca.crt)
+  servercert=$(cat ./server/vpn-server.crt)
+  serverkey=$(cat ./server/vpn-server.key)
+
+sudo tee -a /etc/openvpn/vpn-server.conf << EOF
+dev tun
+topology subnet
+server 10.99.99.0 255.255.255.0
+dh dh.pem
+log vpnserver.log
+keepalive 10 60
+tls-server
+<ca>
+${serverca}
+</ca>
+<cert>
+${servercert}
+</cert>
+<key>
+${serverkey}
+</key>
+EOF
+
+sudo systemctl start openvpn@vpn-server
   
 # Client 1 Certificates to Compressed Tar
-  cp ca.crt ./client-1/
-  cp ./issued/vpn-client-1.crt ./client-1/
+  grep -A 1000 'BEGIN CERTIFICATE' ./issued/vpn-client-1.crt > ./client-1/vpn-client-1.crt
   cp ./private/vpn-client-1.key ./client-1/
-  cp dh.pem ./client-1/
 
-  tar cvf ./tar/client-1.tar ./client-1/*
+  
+# Creating Spawn 1 Config file
+  serverca=$(cat ./server/ca.crt)
+  vpn1cert=$(cat ./client-1/vpn-client-1.crt)
+  vpn1key=$(cat ./client-1/vpn-client-1.key)
+
+sudo tee -a ./client-1/client1.conf << EOF
+dev tun
+client
+remote ${serverip}
+log vpnserver.log
+keepalive 10 60
+tls-client
+<ca>
+${serverca}
+</ca>
+<cert>
+${vpn1cert}
+</cert>
+<key>
+${vpn1key}
+</key>
+EOF
+
+  scp -o UserKnownHostsFile=/dev/null -o StrictHostKeyChecking=no ./client-1/client1.conf spawn1:/tmp
+
   
 # Client 2 Certificates to Compressed Tar
-  cp ca.crt ./client-2/
-  cp ./issued/vpn-client-2.crt ./client-2/
+  grep -A 1000 'BEGIN CERTIFICATE' ./issued/vpn-client-2.crt > ./client-2/vpn-client-2.crt
   cp ./private/vpn-client-2.key ./client-2/
-  cp dh.pem ./client-2/
 
-  tar cvf ./tar/client-2.tar ./client-2/*
-  
-# Push the Tar files out to the spawn clients
-  scp -o UserKnownHostsFile=/dev/null -o StrictHostKeyChecking=no ./tar/client-1.tar spawn1:/tmp/
-  scp -o UserKnownHostsFile=/dev/null -o StrictHostKeyChecking=no ./tar/client-2.tar spawn2:/tmp/
+# Creating Spawn 1 Config file
+  serverca=$(cat ./server/ca.crt)
+  vpn2cert=$(cat ./client-2/vpn-client-2.crt)
+  vpn2key=$(cat ./client-2/vpn-client-2.key)
+
+sudo tee -a ./client-2/client2.conf << EOF
+dev tun
+client
+remote ${serverip}
+log vpn.log
+keepalive 10 60
+tls-client
+<ca>
+${serverca}
+</ca>
+<cert>
+${vpn2cert}
+</cert>
+<key>
+${vpn2key}
+</key>
+EOF
+
+  scp -o UserKnownHostsFile=/dev/null -o StrictHostKeyChecking=no ./client-2/client2.conf spawn2:/tmp
+
 
 
