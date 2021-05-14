@@ -23,8 +23,9 @@ clear
   echo "${serverip} : Server"
   echo "Is this information correct?"
   read -p "y/[n]" choice
-  done
-  
+ done
+ 
+
   clear
   ssh-copy-id -o UserKnownHostsFile=/dev/null -o StrictHostKeyChecking=no vpnuser@${spawn_one_ip}
   read -p "Press ENTER to continue" ENTER
@@ -49,7 +50,7 @@ Host spawn2
 EOF
   
 # Install GIT & OpenVPN
-#  sudo apt-get install openvpn git -y
+  sudo apt-get install openvpn git -y
 
 # Install EasyRSA
   cd /opt
@@ -69,7 +70,7 @@ EOF
   ./easyrsa build-client-full vpn-client-2 nopass
 
 # Create the DH Key
-#  ./easyrsa gen-dh
+  ./easyrsa gen-dh
 
 # Compiling certificates
   cd pki
@@ -173,6 +174,3 @@ EOF
 
 
 echo " Complete... "
-
-
-sudo ping 10.99.99.1
