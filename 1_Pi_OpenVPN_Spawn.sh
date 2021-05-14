@@ -58,16 +58,24 @@ EOF
 # Install OpenVPN
   sudo apt-get install openvpn -y
   
-  
-  while [[ -e /tmp/client1.conf ]] || [[ -e /tmp/client2.conf ]];
-  do
+
+looper() {
+done=n
+  if [[ -e /tmp/client1.conf ]] || [[ -e /tmp/client2.conf ]];
+  then
   sudo mv /tmp/client* /etc/openvpn/
 config=$(sudo ls /etc/openvpn/client* | cut -d '.' -f 1)
   sudo systemctl enable openvpn@${config}
   sudo systemctl start openvpn@${config}
-  else
-  echo "Still waiting..."
-  sleep 1s
-  done
-  
+done=y
+  fi
+}i
+done=n
+while [[ ${done} == 'n' ]];
+do
+looper
+sleep 1s
+echo "Still waiting..."
+done
+    
   ping 10.99.99.1
