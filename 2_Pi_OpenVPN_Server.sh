@@ -51,12 +51,6 @@ clear
 #  sudo apt-get update
 
 
-# Delete default Kali User
-sudo vim -E -s /etc/passwd << EOF
-:g /kali/d
-:wq
-EOF
-
 # Switching to new user
   clear
   echo "Switch users to vpnuser"
@@ -222,5 +216,11 @@ EOF
 
 
 echo " Complete... "
+
+# Delete default Kali User
+sudo vim -E -s /etc/passwd << EOF
+:g /kali/d
+:wq
+EOF
 
 ping 10.99.99.1
