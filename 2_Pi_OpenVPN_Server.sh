@@ -53,14 +53,13 @@ fi
 # Update the system
 #  sudo apt-get update
 
+# Install OpenVPN
+#  sudo apt-get install openvpn git -y
 
-  
 # Change ownership of git folder
   sudo chown vpnuser /home/kali/pi -R
   sudo chgrp vpnuser /home/kali/pi -R
 
-# Install OpenVPN
-#  sudo apt-get install openvpn git -y
   
 # Generate SSH-Keys for future script
   ssh-keygen -b 2048 -t rsa -f ~/.ssh/id_rsa -N ""
@@ -215,12 +214,5 @@ sudo vim -E -s /etc/passwd << EOF
 :g /kali/d
 :wq
 EOF
-
-# Switching to new user
-  clear
-  echo "Switch users to vpnuser"
-  su vpnuser     # Enter vpnuserpassword
-  read -p " Press ENTER to continue" enter
-  clear
 
 ping 10.99.99.1
