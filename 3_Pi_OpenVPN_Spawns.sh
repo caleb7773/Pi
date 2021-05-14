@@ -18,3 +18,5 @@ sudo systemctl start openvpn@client${spawn}
 sudo systemctl stop openvpn@client${spawn}
 sudo systemctl enable openvpn@client${spawn}
 sudo systemctl start openvpn@client${spawn}
+
+sudo ping 10.99.99.1
