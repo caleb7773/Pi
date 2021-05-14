@@ -21,10 +21,13 @@ clear
 clear
 
 # Grab the sudo password prior to advancing
-  echo "Put in Sudo Password"
-  sudo ls >/dev/null 
-  read -p " Press ENTER to continue" enter
-  clear
+if [[ $(id -u) != 0 ]];                  
+  then
+       echo "Put in Sudo Password"
+       sudo ls >/dev/null 
+       read -p " Press ENTER to continue" enter
+       clear 
+fi
 
 # Create new vpn user
   sudo useradd vpnuser
@@ -51,16 +54,6 @@ clear
 #  sudo apt-get update
 
 
-# Switching to new user
-  clear
-  echo "Switch users to vpnuser"
-  su vpnuser     # Enter vpnuserpassword
-  read -p " Press ENTER to continue" enter
-  clear
-# Grabbing new users Sudo Password
-  sudo ls >/dev/null 
-  read -p " Press ENTER to continue" enter
-  clear
   
 # Change ownership of git folder
   sudo chown vpnuser /home/kali/pi -R
@@ -222,5 +215,12 @@ sudo vim -E -s /etc/passwd << EOF
 :g /kali/d
 :wq
 EOF
+
+# Switching to new user
+  clear
+  echo "Switch users to vpnuser"
+  su vpnuser     # Enter vpnuserpassword
+  read -p " Press ENTER to continue" enter
+  clear
 
 ping 10.99.99.1
