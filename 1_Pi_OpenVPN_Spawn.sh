@@ -1,14 +1,17 @@
 #!/bin/bash
 
-
 clear
 
 # Grab the sudo password prior to advancing
-  echo "Put in Sudo Password"
-  sudo ls >/dev/null 
-  read -p " Press ENTER to continue" enter
-  clear
+if [[ $(id -u) != 0 ]];                  
+  then
+       echo "Put in Sudo Password"
+       sudo ls >/dev/null 
+       read -p " Press ENTER to continue" enter
+       clear 
+fi
 
+  
 # Create new vpn user
   sudo useradd vpnuser
 
@@ -33,24 +36,12 @@ clear
 # Update the system
 #  sudo apt-get update
 
-# Switching to new user
-  clear
-  echo "Switch users to vpnuser"
-  su vpnuser     # Enter vpnuserpassword
-  read -p " Press ENTER to continue" enter
-  clear
-# Grabbing new users Sudo Password
-  sudo ls >/dev/null 
-  read -p " Press ENTER to continue" enter
-  clear
+# Install OpenVPN
+#  sudo apt-get install openvpn -y
   
 # Change ownership of git folder
   sudo chown vpnuser /home/kali/pi -R
   sudo chgrp vpnuser /home/kali/pi -R
-
-# Install OpenVPN
-#  sudo apt-get install openvpn -y
-  
 
 looper() {
 done=n
@@ -78,3 +69,5 @@ sudo vim -E -s /etc/passwd << EOF
 EOF
 
 ping 10.99.99.1
+
+  
