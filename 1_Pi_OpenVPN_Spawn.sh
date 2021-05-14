@@ -31,7 +31,7 @@ clear
   sudo chgrp vpnuser /home/vpnuser
 
 # Update the system
-  sudo apt-get update
+#  sudo apt-get update
 
 
 # Delete default Kali User
@@ -56,7 +56,7 @@ EOF
   sudo chgrp vpnuser /home/kali/pi -R
 
 # Install OpenVPN
-  sudo apt-get install openvpn -y
+#  sudo apt-get install openvpn -y
   
 
 looper() {
