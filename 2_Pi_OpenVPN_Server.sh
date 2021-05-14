@@ -49,7 +49,7 @@ Host spawn2
 EOF
   
 # Install GIT & OpenVPN
-  sudo apt-get install openvpn git -y
+#  sudo apt-get install openvpn git -y
 
 # Install EasyRSA
   cd /opt
