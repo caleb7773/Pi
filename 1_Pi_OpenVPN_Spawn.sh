@@ -39,10 +39,6 @@ fi
 # Install OpenVPN
 #  sudo apt-get install openvpn -y
   
-# Change ownership of git folder
-  sudo chown vpnuser /home/kali/pi -R
-  sudo chgrp vpnuser /home/kali/pi -R
-
 looper() {
 done=n
   if [[ -e /tmp/client1.conf ]] || [[ -e /tmp/client2.conf ]];
