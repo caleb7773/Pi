@@ -69,7 +69,7 @@ config=$(sudo ls /etc/openvpn/client* | cut -d '.' -f 1)
   sudo systemctl start openvpn@${config}
 done=y
   fi
-}i
+}
 done=n
 while [[ ${done} == 'n' ]];
 do
