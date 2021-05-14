@@ -1,11 +1,8 @@
 sudo git clone https://www.github.com/caleb7773/pi.git
 sudo chmod +x ./pi/*
 
-# Run the Base Script first on each device
-./pi/1_Pi_OpenVPN_Base.sh
+# Run the Base Script first on each spawn
+./pi/1_Pi_OpenVPN_Spawn.sh
 
 # Run the Server second on the server
 ./pi/2_Pi_OpenVPN_Server.sh
-
-# Run the Spawns second script on both spawns
-./pi/3_Pi_OpenVPN_Spawns.sh
