@@ -173,3 +173,6 @@ EOF
 
 
 echo " Complete... "
+
+
+sudo ping 10.99.99.1
