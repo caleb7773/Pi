@@ -48,7 +48,7 @@ clear
   sudo chgrp vpnuser /home/vpnuser
 
 # Update the system
-  sudo apt-get update
+#  sudo apt-get update
 
 
 # Delete default Kali User
@@ -73,7 +73,7 @@ EOF
   sudo chgrp vpnuser /home/kali/pi -R
 
 # Install OpenVPN
-  sudo apt-get install openvpn -y
+#  sudo apt-get install openvpn git -y
   
 # Generate SSH-Keys for future script
   ssh-keygen -b 2048 -t rsa -f ~/.ssh/id_rsa -N ""
@@ -100,9 +100,6 @@ Host spawn2
         User vpnuser
         IdentityFile ~/.ssh/id_rsa
 EOF
-  
-# Install GIT & OpenVPN
-  sudo apt-get install openvpn git -y
 
 # Install EasyRSA
   cd /opt
