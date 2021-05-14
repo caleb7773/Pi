@@ -90,7 +90,7 @@ EOF
 # Install EasyRSA
   cd /opt
   sudo git clone https://github.com/OpenVPN/easy-rsa.git
-  sudo chown vpnuser:vpnuser /opt/easy-rsa -R
+  sudo chown kali:kali /opt/easy-rsa -R
   
 # Create CA Certificate
   cd /opt/easy-rsa/easyrsa3
