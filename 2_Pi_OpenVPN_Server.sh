@@ -14,6 +14,7 @@ clear
   echo "${spawn_one_ip} and ${spawn_two_ip} : Spawns"
   echo "${serverip} : Server"
   echo "Is this information correct?"
+  echo "Are both Spawns Waiting?"
   read -p "y/[n]" choice
  done
  
