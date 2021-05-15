@@ -60,7 +60,7 @@ sleep 1s
 echo "Still waiting..."
 done
 
-
+sleep 2s
 sudo ping 10.99.99.1
 
   
