@@ -43,8 +43,10 @@ looper() {
 done=n
   if [[ -e /tmp/client1.conf ]] || [[ -e /tmp/client2.conf ]];
   then
+cd /tmp
+config=$(sudo ls client* | cut -d '.' -f 1)
+cd /etc/openvpn
   sudo mv /tmp/client* /etc/openvpn/
-config=$(sudo ls /etc/openvpn/client* | cut -d '.' -f 1)
   sudo systemctl enable openvpn@${config}
   sudo systemctl start openvpn@${config}
 done=y
