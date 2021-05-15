@@ -21,6 +21,17 @@ clear
 
 clear
 
+# Generate SSH-Keys for future script
+  ssh-keygen -b 2048 -t rsa -f ~/.ssh/id_rsa -N ""
+  
+  clear
+  ssh-copy-id -o UserKnownHostsFile=/dev/null -o StrictHostKeyChecking=no vpnuser@${spawn_one_ip}
+  read -p "Press ENTER to continue" ENTER
+  
+  clear
+  ssh-copy-id -o UserKnownHostsFile=/dev/null -o StrictHostKeyChecking=no vpnuser@${spawn_two_ip}
+  read -p "Press ENTER to continue" ENTER
+  
 # Grab the sudo password prior to advancing
 if [[ $(id -u) != 0 ]];                  
   then
@@ -62,17 +73,7 @@ fi
   sudo chgrp vpnuser /home/kali/pi -R
 
   
-# Generate SSH-Keys for future script
-  ssh-keygen -b 2048 -t rsa -f ~/.ssh/id_rsa -N ""
-  
-  clear
-  ssh-copy-id -o UserKnownHostsFile=/dev/null -o StrictHostKeyChecking=no vpnuser@${spawn_one_ip}
-  read -p "Press ENTER to continue" ENTER
-  
-  clear
-  ssh-copy-id -o UserKnownHostsFile=/dev/null -o StrictHostKeyChecking=no vpnuser@${spawn_two_ip}
-  read -p "Press ENTER to continue" ENTER
-  
+
 # Creating SSH Config File
   sudo tee -a ~/.ssh/config << EOF
 Host spawn1
