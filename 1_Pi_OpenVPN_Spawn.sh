@@ -59,6 +59,6 @@ echo "Still waiting..."
 done
 
 
-ping 10.99.99.1
+sudo ping 10.99.99.1
 
   
