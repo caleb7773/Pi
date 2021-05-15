@@ -26,11 +26,9 @@ clear
   
   clear
   ssh-copy-id -o UserKnownHostsFile=/dev/null -o StrictHostKeyChecking=no vpnuser@${spawn_one_ip}
-  read -p "Press ENTER to continue" ENTER
   
   clear
   ssh-copy-id -o UserKnownHostsFile=/dev/null -o StrictHostKeyChecking=no vpnuser@${spawn_two_ip}
-  read -p "Press ENTER to continue" ENTER
   
 # Grab the sudo password prior to advancing
 if [[ $(id -u) != 0 ]];                  
