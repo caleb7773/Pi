@@ -209,10 +209,4 @@ EOF
 
 echo " Complete... "
 
-# Delete default Kali User
-sudo vim -E -s /etc/passwd << EOF
-:g /kali/d
-:wq
-EOF
-
 ping 10.99.99.1
