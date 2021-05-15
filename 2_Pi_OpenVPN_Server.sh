@@ -210,4 +210,4 @@ EOF
 
 echo " Complete... "
 
-ping 10.99.99.1
+sudo ping 10.99.99.1
