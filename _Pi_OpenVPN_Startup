@@ -1,8 +1,12 @@
-
+# Run the spawns first to ensure they get the user created prior to the SSH commands on the Server
 
 # Run the Base Script first on each spawn
-sudo git clone https://www.github.com/caleb7773/pi.git & sudo chmod +x ./pi/* & ./pi/1_Pi_OpenVPN_Spawn.sh
+sudo git clone https://www.github.com/caleb7773/pi.git
+sudo chmod +x ./pi/*
+./pi/1_Pi_OpenVPN_Spawn.sh
 
 
 # Run the Server second on the server
-sudo git clone https://www.github.com/caleb7773/pi.git & sudo chmod +x ./pi/* & ./pi/2_Pi_OpenVPN_Server.sh
+sudo git clone https://www.github.com/caleb7773/pi.git
+sudo chmod +x ./pi/*
+./pi/2_Pi_OpenVPN_Server.sh
