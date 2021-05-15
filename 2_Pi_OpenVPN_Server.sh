@@ -105,7 +105,7 @@ EOF
   ./easyrsa build-client-full vpn-client-2 nopass
 
 # Create the DH Key
-  ./easyrsa gen-dh
+#  ./easyrsa gen-dh
 
 # Compiling certificates
   cd pki
